@@ -50,6 +50,11 @@ class Listing extends Model
     	return $this->category->cost;
     }
 
+    public function ownedByUser(User $user)
+    {
+        return $this->user->id === $user->id;
+    }
+
     public function user()
     {
     	return $this->belongsTo(User::class);

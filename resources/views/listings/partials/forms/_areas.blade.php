@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group{{ $errors->has('area_id') ? 'selected' : '' }}">
 	<label for="area_id" class="control-label">Select Area</label>
 	<select name="area_id" id="area_id" class="form-control">
 		@foreach($areas as $country)
@@ -6,13 +6,22 @@
 				@foreach($country->children as $state)
 					<optgroup label="{{ $state->name }}">
 						@foreach($state->children as $dist)
-							<option value="{{ $dist->id }}" {{ old('area_id') == $dist->id ? 'selected' : '' }}>
-								{{ $dist->name }}
-							</option>
+							@if(
+								isset($listing) && $listing->area->id == $dist->id || 
+								! isset($listing) && $area->id == $dist->id && ! old('area_id') ||
+								old('area_id') == $dist->id
+							)
+								<option value="{{ $dist->id }}" selected="selected">{{ $dist->name }}</option>
+							@else	
+								<option value="{{ $dist->id }}">{{ $dist->name }}</option>
+							@endif	
 						@endforeach
 					</optgroup>
 				@endforeach
 			</optgroup>
 		@endforeach
 	</select>
+	@include('layouts.partials._formError', [
+		'field' => 'area_id'
+	])
 </div>
