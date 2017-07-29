@@ -16,6 +16,9 @@
                 <form action="{{ route('listings.update', [$area, $listing]) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
+                    @if($listing->live())
+                        <input type="hidden" name="category_id" value="{{ $listing->category_id }}">
+                    @endif
                     @include('listings.partials.forms._areas')
                     @include('listings.partials.forms._categories')
                     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -34,7 +37,14 @@
                             'field' => 'body'
                         ])
                     </div>
-                    <input type="submit" value="Save" class="btn btn-default">
+                    <div class="form-group clearfix">
+                        <input type="submit" value="Save" class="btn btn-default">
+                        @if(!$listing->live())
+                            <button type="submit" name="payment" value="true" class="btn btn-sm btn-primary pull-right">
+                                Continue to payment
+                            </button>
+                        @endif
+                    </div>
                 </form>
             </div>
         </div>

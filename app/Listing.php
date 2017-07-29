@@ -47,7 +47,7 @@ class Listing extends Model
 
     public function cost()
     {
-    	return $this->category->cost;
+    	return $this->category->price;
     }
 
     public function ownedByUser(User $user)
