@@ -14,7 +14,8 @@
                         <button type="submit" class="btn btn-primary">Complete</button>
                     </form>
                 @else
-                    <p>Total cost: &euro;{{ number_format($listing->cost(), 2) }}</p>    
+                    <p style="font-size: 1.2em;">Total cost: &euro;{{ number_format($listing->cost(), 2) }}</p>
+                    <payment-form></payment-form>   
                 @endif
             </div>
         </div>
