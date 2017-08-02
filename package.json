@@ -19,6 +19,6 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "braintree-web": "^3.20.1"
+    "braintree-web": "^2.*"
   }
 }
