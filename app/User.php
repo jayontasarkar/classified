@@ -40,4 +40,9 @@ class User extends Authenticatable
             ->withTimestamps()
             ->withPivot(['count', 'id']);
     }
+
+    public function listings()
+    {
+        return $this->hasMany(Listing::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 return [
 	'defaults' => [
-		'area' => 'bd'
+		'area'     => 'bd',
+		'per_page' => 10
 	]
 ];

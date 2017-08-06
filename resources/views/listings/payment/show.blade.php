@@ -7,7 +7,7 @@
             <div class="panel-heading">Pay for your listing</div>
             <div class="panel-body">
                 @if($listing->cost() == 0)
-                    <form action="#" method="POST">
+                    <form action="{{ route('listings.payment.update', [$area, $listing]) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <p>There's nothing for you to pay</p>
